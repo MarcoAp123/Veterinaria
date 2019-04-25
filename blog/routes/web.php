@@ -22,8 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 //-----users o empleados--------//
 	Route::get('/users', 'UserController@index')->name('users');
 	Route::resource('/user', 'UserController');
+	Route::delete('/users/{user}', 'UserController@destroy');
 
 //-----rols--------//
 	Route::get('/rols', 'RolController@index')->name('rols');
 	Route::resource('/rol', 'RolController');
+	Route::delete('/rols/{rol}', 'rolController@destroy');
+
 

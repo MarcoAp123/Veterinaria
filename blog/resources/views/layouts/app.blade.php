@@ -32,7 +32,7 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
 
-
+  {!! Charts::assets() !!}
   <style>
     .example-modal .modal {
       position: relative;
@@ -558,6 +558,22 @@
       modal.find('.modal-body #description').val(description);
   })
 </script>
+<script>
+  $('#modal-user-delete').on('show.bs.modal', function (event){
+      var button = $(event.relatedTarget)
+      var user = button.data('myuser')
+      var modal = $(this)
+      modal.find('.modal-body #user').val(user);
+  })
+</script>
+<script>
+  $('.btn-delete').on('click', function(e){
+    if (confirm('¿ Está seguro de eliminar el registro ?')) {
+      $(this).parents('form:first').submit();
+    }
+  });
+</script>
+
 
 </body>
 </html>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Rol;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -14,7 +15,8 @@ class UserController extends Controller
     {
         $list_users = User::all();
         $list_roles = Rol::all();
-        return view('users', compact('list_users', 'list_roles'));
+        //dd($now = Carbon::now('-04:00'));
+        return view('users', compact('list_users', 'list_roles', 'chart'));
     }
     //funcion para crear un nuevo registro de empleado
     public function store(Request $request)
@@ -34,6 +36,13 @@ class UserController extends Controller
     	$user = User::findOrFail($request->user_id);
     	$user->update($request->all());
         flash(' El empleado "'.$user->name.' '.$user->rol->description.'" ha sido modificado exitosamente! ')->warning()->important();
+        return back();
+    }
+    //function para eliminar el registro de un empleado
+    public function destroy(User $user)
+    {
+        $user->delete();
+        flash(' El empleado "'.$user->name.' '.$user->rol->description.'" ha sido eliminado exitosamente! ')->error()->important();
         return back();
     }
 

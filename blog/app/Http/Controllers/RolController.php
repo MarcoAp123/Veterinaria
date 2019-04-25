@@ -31,4 +31,11 @@ class RolController extends Controller
         flash(' El rol "'.$rol->description.'" con la abreviatura "'.$rol->name.'" ha sido modificado exitosamente! ')->warning()->important();
         return back();
     }
+    //function para eliminar el registro de un rol
+    public function destroy(Rol $rol)
+    {
+        $rol->delete();
+        flash(' El rol "'.$rol->description.' con la abreviatura '.$rol->name.'" ha sido eliminado exitosamente! ')->error()->important();
+        return back();
+    }
 }

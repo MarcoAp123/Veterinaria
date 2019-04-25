@@ -6,7 +6,7 @@
     
     <h3>Lista De Rols</h3>
     @include ('flash::message')
-    <button class="btn btn-success" data-toggle="modal" data-target="#modal-rol-create">Nuevo Rol <i class="fa fa-plus"></i></button>
+    <button class="btn btn-success col-sm-2 col-md-offset-10" data-toggle="modal" data-target="#modal-rol-create">Nuevo Rol <i class="fa fa-plus"></i></button>
     
     <!----- tabla de registros de rols ----->
     <div class="box-body">
@@ -18,7 +18,8 @@
           <th>Id</th>
           <th>Abreviatura</th>
           <th>Nombre</th>
-          <th>Accion</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
         </tr>
         </thead>
         <tbody>
@@ -27,9 +28,15 @@
             <td>{{ $rol->id }}</td>
             <td>{{ $rol->name }}</td>
             <td>{{ $rol->description }}</td>
-            <td><button class="btn btn-warning" data-toggle="modal" data-myrol_id='{{$rol->id}}' data-myname='{{$rol->name}}' data-mydescription='{{$rol->description}}' data-target="#modal-rol-edit"> <i class="fa fa-wrench"></i></button>
-              <button class="btn btn-danger" data-toggle="modal" data-myuser_id='{{$rol->id}}' data-target="#modal-rol-delete"> <i class="fa fa-trash"></i></button>
+            <td><button class="btn btn-warning col-md-6" data-toggle="modal" data-myrol_id='{{$rol->id}}' data-myname='{{$rol->name}}' data-mydescription='{{$rol->description}}' data-target="#modal-rol-edit"> <i class="fa fa-wrench"></i>
             </td> 
+            <td>
+              <form action="/rols/{{$rol->id}}" method="POST">
+                {{ method_field('DELETE') }}
+                {{ csrf_field() }}
+                <button type="button" class="btn btn-danger btn-delete col-md-5"> <i class="fa fa-trash"></i></button></td> 
+              </form>
+            </td>
           </tr>
           @endforeach                  
         </tbody>

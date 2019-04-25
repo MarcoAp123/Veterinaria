@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use Charts;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,13 @@ class HomeController extends Controller
     {
         $users = DB::table('users')->count();
         $lista_users = User::all();
-        return view('home', compact('users', 'lista_users'));
+        $chart = Charts::database(User::all(),'line', 'highcharts')
+                        ->title('Usuarios')
+                        ->elementLabel('Total Usuarios')
+                        ->dimensions(1055, 300)
+                        ->Responsive(false)
+                        ->groupByMonth(date('Y'), true);
+        return view('home', compact('users', 'lista_users', 'chart'));
     }
 
 }
