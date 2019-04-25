@@ -198,7 +198,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="{{ route('providers') }}">
             <i class="fa fa-inbox"></i><span>Proveedores</span>
           </a>
         </li>
@@ -547,6 +547,22 @@
   })
 </script>
 <script>
+  $('#modal-provider-edit').on('show.bs.modal', function (event){
+      var button = $(event.relatedTarget)
+      var provider_id = button.data('myprovider_id')
+      var name = button.data('myname')
+      var phone = button.data('myphone')
+      var email = button.data('myemail')
+      var address = button.data('myaddress')
+      var modal = $(this)
+      modal.find('.modal-body #provider_id').val(provider_id);
+      modal.find('.modal-body #name').val(name);
+      modal.find('.modal-body #phone').val(phone);
+      modal.find('.modal-body #email').val(email);
+      modal.find('.modal-body #address').val(address);
+  })
+</script>
+<script>
   $('#modal-rol-edit').on('show.bs.modal', function (event){
       var button = $(event.relatedTarget)
       var rol_id = button.data('myrol_id')
@@ -556,14 +572,6 @@
       modal.find('.modal-body #rol_id').val(rol_id);
       modal.find('.modal-body #name').val(name);
       modal.find('.modal-body #description').val(description);
-  })
-</script>
-<script>
-  $('#modal-user-delete').on('show.bs.modal', function (event){
-      var button = $(event.relatedTarget)
-      var user = button.data('myuser')
-      var modal = $(this)
-      modal.find('.modal-body #user').val(user);
   })
 </script>
 <script>

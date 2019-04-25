@@ -65,10 +65,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#intro">Bienvenido</a></li>
-            <li><a href="#service">Servicios</a></li>
-            <li><a href="#doctor">Doctores</a></li>
-            <li><a href="#facilities">Facilidades</a></li>
+            <li class="active"><a href="#intro">Home</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#doctor">Doctors</a></li>
+            <li><a href="#facilities">Facilities</a></li>
             @if (Route::has('login'))
                 @auth
                 <li><a href="{{ url('/home') }}">Home</a></li>
@@ -78,7 +78,7 @@
                 @endauth
             @endif
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Mas <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="index.html">Home CTA</a></li>
                 <li><a href="index-form.html">Home Form</a></li>
