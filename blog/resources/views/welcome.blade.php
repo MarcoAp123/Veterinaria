@@ -43,10 +43,10 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-6 col-md-6">
-              <p class="bold text-left">Monday - Saturday, 8am to 10pm </p>
+              <p class="bold text-left">Lunes - Sábado, 9:00 am a 10:00 pm </p>
             </div>
             <div class="col-sm-6 col-md-6">
-              <p class="bold text-right">Call us now +62 008 65 001</p>
+              <p class="bold text-right">Llámanos ahora +591 69824662</p>
             </div>
           </div>
         </div>
@@ -56,19 +56,17 @@
         <div class="navbar-header page-scroll">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
-                </button>
-          <a class="navbar-brand" href="index.html">
-                    <img src="index/img/logo.png" alt="" width="150" height="40" />
-                </a>
+                </button>        
+          <a class="navbar-brand" href="index.html"><i class="fa fa-paw fa-2x "></i> AUXILIO ANIMAL</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#intro">Home</a></li>
-            <li><a href="#service">Service</a></li>
-            <li><a href="#doctor">Doctors</a></li>
-            <li><a href="#facilities">Facilities</a></li>
+            <li class="active"><a href="#intro">Bienvenido</a></li>
+            <li><a href="#service">Servicios</a></li>
+            <li><a href="#doctor">Doctores</a></li>
+            <li><a href="#facilities">Facilidades</a></li>
             @if (Route::has('login'))
                 @auth
                 <li><a href="{{ url('/home') }}">Home</a></li>
@@ -78,7 +76,7 @@
                 @endauth
             @endif
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Mas <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="index.html">Home CTA</a></li>
                 <li><a href="index-form.html">Home Form</a></li>
@@ -117,8 +115,6 @@
                   </p>
                 </div>
               </div>
-
-
             </div>
             <div class="col-lg-6">
               <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
@@ -141,10 +137,10 @@
             <div class="wow fadeInUp" data-wow-delay="0.2s">
               <div class="box text-center">
 
-                <i class="fa fa-check fa-3x circled bg-skin"></i>
-                <h4 class="h-bold">Make an appoinment</h4>
+                <i class="fa fa-stethoscope fa-4x circled bg-skin"></i>
+                <h4 class="h-bold">Medicina y Cirugía</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                  Medicina Interna, <br>Medicina Preventiva, <br>Geriatría, <br>Cirugía General.
                 </p>
               </div>
             </div>
@@ -153,10 +149,11 @@
             <div class="wow fadeInUp" data-wow-delay="0.2s">
               <div class="box text-center">
 
-                <i class="fa fa-list-alt fa-3x circled bg-skin"></i>
-                <h4 class="h-bold">Choose your package</h4>
+                <i class="fa fa-user-md fa-4x circled bg-skin"></i>
+                <h4 class="h-bold">Especialista</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                  Medicina Felina, <br>Oftalmología, <br>Dermatología, <br>Cardiologíabr
+                  , <br>Odontología, <br>Oncología.
                 </p>
               </div>
             </div>
@@ -164,10 +161,10 @@
           <div class="col-sm-3 col-md-3">
             <div class="wow fadeInUp" data-wow-delay="0.2s">
               <div class="box text-center">
-                <i class="fa fa-user-md fa-3x circled bg-skin"></i>
-                <h4 class="h-bold">Help by specialist</h4>
+                <i class="fa fa-flask fa-4x circled bg-skin"></i>
+                <h4 class="h-bold">Laboratorio</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                  Análisis clínico.
                 </p>
               </div>
             </div>
@@ -175,11 +172,10 @@
           <div class="col-sm-3 col-md-3">
             <div class="wow fadeInUp" data-wow-delay="0.2s">
               <div class="box text-center">
-
-                <i class="fa fa-hospital-o fa-3x circled bg-skin"></i>
-                <h4 class="h-bold">Get diagnostic report</h4>
+                <i class="fa fa-desktop fa-4x circled bg-skin"></i>
+                <h4 class="h-bold">Diagnóstico</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                  Radiología digital y <br>Ecografía.
                 </p>
               </div>
             </div>
