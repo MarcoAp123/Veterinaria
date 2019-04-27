@@ -34,7 +34,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Reset Password</p>
+    <p class="login-box-msg">Restaurar Contraseña</p>
     @if (session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
