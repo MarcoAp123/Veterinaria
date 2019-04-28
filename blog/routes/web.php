@@ -29,9 +29,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::resource('/provider', 'ProviderController');
 	Route::delete('/providers/{provider}', 'ProviderController@destroy');
 
-//-----rols--------//
+//-------rols--------//
 	Route::get('/rols', 'RolController@index')->name('rols');
 	Route::resource('/rol', 'RolController');
 	Route::delete('/rols/{rol}', 'RolController@destroy');
 
+//-----products--------//
+	Route::get('/products', 'ProductController@index')->name('products');
+	Route::resource('/product', 'ProductController');
 
+//-----ventas----------//
+	Route::get('/sales', 'SaleController@index')->name('sales');

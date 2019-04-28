@@ -141,7 +141,7 @@
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header"><p>MENÚ DEL {{Auth::user()->rol->description}}</p></li>
+        <li class="header"><p>Menú Del {{Auth::user()->rol->description}}</p></li>
         @if (Auth::user()->rol_id == 1)
         <li>
           <a href="#">
@@ -149,21 +149,14 @@
           </a>
         </li>
           <li>
-          <a href="">
+          <a href="{{route('sales')}}">
             <i class="fa fa-usd"></i><span>Ventas </span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-eyedropper"></i><span>Medicamentos</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+        <li>
+          <a href="{{ route('products') }}">
+            <i class="fa fa-eyedropper"></i><span>Productos</span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-exclamation-circle"></i> Medicamentos Por Caducar</a></li>
-            <li><a href=""><i class="fa fa-list"></i> Inventario</a></li>
-          </ul>
         </li>
         <li>
           <a href="{{ route('users') }}">
@@ -518,6 +511,7 @@
 <!-- DataTables -->
 <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="js/asd.js"></script>
 <script>
   $(function () {
     $('#example1').DataTable()
@@ -544,6 +538,22 @@
       modal.find('.modal-body #name').val(name);
       modal.find('.modal-body #email').val(email);
       modal.find('.modal-body #rol_id').val(rol_id);
+  })
+</script>
+<script>
+  $('#modal-product-edit').on('show.bs.modal', function (event){
+      var button = $(event.relatedTarget)
+      var product_id = button.data('myproduct_id')
+      var detail = button.data('mydetail')
+      var category = button.data('mycategory')
+      var unit_cost = button.data('myunit_cost')
+      var sale_price = button.data('mysale_price')
+      var modal = $(this)
+      modal.find('.modal-body #product_id').val(product_id);
+      modal.find('.modal-body #detail').val(detail);
+      modal.find('.modal-body #category').val(category);
+      modal.find('.modal-body #unit_cost').val(unit_cost);
+      modal.find('.modal-body #sale_price').val(sale_price);
   })
 </script>
 <script>

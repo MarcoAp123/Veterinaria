@@ -16,12 +16,7 @@ class ProviderController extends Controller
     //funcion para crear un nuevo registro de empleado
     public function store(Request $request)
     {
-    	$provider = Provider::create([
-    		'name' => $request->name,
-    		'phone' => $request->phone,
-    		'email' => $request->email,
-    		'address' => $request->address,	
-    	]);
+    	$provider = Provider::create($request->all());
         flash(' El nuevo empleado "'.$provider->name.'" ha sido creado con exito! ')->success()->important();
         return back();
     }

@@ -9,8 +9,7 @@
 
     <!----- tabla de registros de empleados ----->
     <div class="box-body">
-      <div class="box-header">
-      </div>      
+      <div class="box-header"></div>      
       <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
@@ -29,8 +28,7 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->rol->description }}</td>
-            <td><button class="btn btn-warning col-md-9" data-toggle="modal" data-myuser_id='{{$user->id}}' data-myname='{{$user->name}}' data-myemail='{{$user->email}}' data-myrol_id='{{$user->rol_id}}' data-target="#modal-user-edit"> <i class="fa fa-wrench"></i></button>
-            </td>
+            <td><button class="btn btn-warning col-md-9" data-toggle="modal" data-myuser_id='{{$user->id}}' data-myname='{{$user->name}}' data-myemail='{{$user->email}}' data-myrol_id='{{$user->rol_id}}' data-target="#modal-user-edit"> <i class="fa fa-wrench"></i></button></td>
             <td>
               <form action="/users/{{$user->id}}" method="POST">
                 {{ method_field('DELETE') }}

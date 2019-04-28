@@ -16,10 +16,7 @@ class RolController extends Controller
     //funcion para crear un nuevo registro de rol
     public function store(Request $request)
     {
-    	$rol = Rol::create([
-    		'name' => $request->name,
-    		'description' => $request->description,    		
-    	]);
+    	$rol = Rol::create($request->all());
         flash(' El nuevo rol "'.$rol->description.'" con la abreviatura "'.$rol->name.'" ha sido creado con exitosamente! ')->success()->important();
         return back();
     }

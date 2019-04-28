@@ -15,7 +15,6 @@ class UserController extends Controller
     {
         $list_users = User::all();
         $list_roles = Rol::all();
-        //dd($now = Carbon::now('-04:00'));
         return view('users', compact('list_users', 'list_roles', 'chart'));
     }
     //funcion para crear un nuevo registro de empleado
