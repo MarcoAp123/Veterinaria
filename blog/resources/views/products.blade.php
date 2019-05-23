@@ -83,7 +83,7 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Proveedor</label>
                   <div class="col-sm-9">
-                    <select class="form-control" name="provider_id">
+                    <select class="form-control select2" name="provider_id">
                       @foreach ($list_providers as $provider)
                           <option value="{{ $provider->id }}">{{ $provider->name }}</option>
                       @endforeach

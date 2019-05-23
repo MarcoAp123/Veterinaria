@@ -43,5 +43,5 @@ class UserController extends Controller
         $user->delete();
         flash(' El empleado "'.$user->name.' '.$user->rol->description.'" ha sido eliminado exitosamente! ')->error()->important();
         return back();
-    }    
+    } 
 }

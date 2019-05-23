@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Restaturar Contraseña | A.A.</title>
+  <title>AdminLTE 2 | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -30,11 +30,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a><i class="fa fa-paw fa-1x"></i><b> Auxilio</b> Animal</a>
+    <a href="#"><b>Admin</b>LTE</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Restaurar Contraseña</p>
+    <p class="login-box-msg">Reset Password</p>
     @if (session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
@@ -54,7 +54,7 @@
       <div class="row">
         <!-- /.col -->
         <div class="col-xs-7">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Enviar Contraseña</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Send Password Reset Link</button>
         </div>
         <!-- /.col -->
       </div>

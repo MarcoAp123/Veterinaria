@@ -12,4 +12,9 @@ class Product extends Model
     {
     	return $this->belongsTo(Provider::class);
     }
+
+    public function service_body() 
+    {
+        return $this->belongsTo(Service_body::class);
+    }
 }

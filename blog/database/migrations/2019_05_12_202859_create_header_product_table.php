@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServiceBodysTable extends Migration
+class CreateHeaderProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateServiceBodysTable extends Migration
      */
     public function up()
     {
-        Schema::create('service_bodys', function (Blueprint $table) {
+        Schema::create('header_product', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('service_header_id')->nullable();
-            $table->foreign('service_header_id')->references('id')->on('service_headers');
+            $table->unsignedInteger('header_id')->nullable();
+            $table->foreign('header_id')->references('id')->on('headers');
             $table->unsignedInteger('product_id')->nullable();
             $table->foreign('product_id')->references('id')->on('products');
-            $table->unsignedInteger('service_id')->nullable();
-            $table->foreign('service_id')->references('id')->on('services');
-            $table->integer('cantidad');
             $table->timestamps();
         });
     }
@@ -33,7 +30,6 @@ class CreateServiceBodysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_bodys');
+        Schema::dropIfExists('header_product');
     }
 }
-

@@ -72,8 +72,8 @@
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Rol</label>
-                  <div class="col-sm-8">
-                    <select class="form-control" name="rol_id">
+                  <div class="col-sm-4">
+                    <select class="form-control select2" name="rol_id">
                       @foreach ($list_roles as $rol)
                           <option value="{{ $rol->id }}">{{ $rol->description }}</option>
                       @endforeach
@@ -128,15 +128,15 @@
                 </div>
               </div>
               <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3 control-label">Rol  </label>
-                  <div class="col-sm-5">
-                    <select class="form-control" name="rol_id" id="rol_id">
-                      @foreach ($list_roles as $rol)
-                          <option value="{{ $rol->id }}">{{ $rol->description }}</option>
-                      @endforeach
-                    </select>
-                  </div>
+                <label for="inputEmail3" class="col-sm-3 control-label">Rol  </label>
+                <div class="col-sm-5">
+                  <select class="form-control" name="rol_id" id="rol_id">
+                    @foreach ($list_roles as $rol)
+                        <option value="{{ $rol->id }}">{{ $rol->description }}</option>
+                    @endforeach
+                  </select>
                 </div>
+              </div>
               
               <div class="modal-footer">
                 <button type="submit" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>

@@ -26,6 +26,18 @@
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="../../plugins/iCheck/all.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -154,19 +166,20 @@
           </a>
         </li>
         <li>
-          <a href="{{ route('products') }}">
+          <a href="{{route('products')}}">
             <i class="fa fa-eyedropper"></i><span>Productos</span>
           </a>
         </li>
-        <li>
-          <a href="{{ route('users') }}">
-            <i class="fa fa-users"></i><span>Empleados</span>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i><span>Usuarios</span>
+            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
           </a>
-        </li>
-        <li>
-          <a href="{{ route('rols') }}">
-            <i class="fa fa-black-tie"></i><span>Roles</span>
-          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('users')}}"><i class="fa fa-user-md"></i> Empleados </a></li>
+            <li><a href="{{route('clients')}}"><i class="fa fa-user"></i> Clientes </a></li>
+            <li><a href="{{route('rols')}}"><i class="fa fa-black-tie"></i> Roles </a></li>
+          </ul>
         </li>
         <li>
           <a href="#">
@@ -176,9 +189,7 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-stethoscope"></i><span>Consultas</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
           </a>
           <ul class="treeview-menu">
             <li><a href="../../index.html"><i class="fa fa-plus-square"></i> Mayores </a></li>
@@ -508,6 +519,8 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- DataTables -->
 <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -538,6 +551,20 @@
       modal.find('.modal-body #name').val(name);
       modal.find('.modal-body #email').val(email);
       modal.find('.modal-body #rol_id').val(rol_id);
+  })
+</script>
+<script>
+  $('#modal-client-edit').on('show.bs.modal', function (event){
+      var button = $(event.relatedTarget)
+      var client_id = button.data('myclient_id')
+      var name = button.data('myname')
+      var ci = button.data('myci')
+      var nit = button.data('mynit')
+      var modal = $(this)
+      modal.find('.modal-body #client_id').val(client_id);
+      modal.find('.modal-body #name').val(name);
+      modal.find('.modal-body #ci').val(ci);
+      modal.find('.modal-body #nit').val(nit);
   })
 </script>
 <script>
@@ -591,7 +618,81 @@
     }
   });
 </script>
+<script>
+    $('#product_id').change(function(){
+    var product = $(this).val();
+    $.get('/getproduct/'+product, function(data){
+      console.log(data);
+      $('#stock').val(data[0].cantidad);
+      $('#sale_price').val(data[0].sale_price);
+    });
+   });
+</script>
+<script>
+  $('#div-productos').hide();
+  $('#create-header').click(function(){
+    var user = $('#user_id').val();
+    var client = $('#client_id').val();
+    var route = "http://localhost:8000/header";
+    var token = $('#token').val();
 
+    $.ajax({
+      url : route,
+      headers : {'X-CSRF-TOKEN' : token},
+      type : 'POST',
+      dataType : 'json',
+      data : {
+        user_id : user,
+        client_id : client,
+      }
+    });
+    $('#div-boton').hide();
+    $('#div-productos').show();
+  });
+</script>
+<script>
+  $('#add').click(function(){
+    var service_header = $('#service_header_id').val();
+    var product = $('#product_id').val();
+    var service = $('#service_id').val();
+    var cantid = $('#cantidad').val();
+    var route = "http://localhost:8000/sale";
+    var token = $('#token').val();
 
+    $.ajax({
+      url : route,
+      headers : {'X-CSRF-TOKEN' : token},
+      type : 'POST',
+      dataType : 'json',
+      data : {
+        service_header_id : service_header,
+        product_id : product,
+        service_id : service,
+        cantidad : cantid,
+      }
+    });
+    $.get('/getbody/'+service_header, function(data){
+      console.log(data);
+      var precio = $('#sale_price').val();
+      var linea = '';
+        for (var i=0; i<data.length; i++)
+          linea+= '<tr><td><button type="button" class="btn btn-warning"><i class="fa fa-remove"></i></button></td><td>'+data[i].product_id+'</td><td>'+data[i].cantidad+'</td><td></td><td>'+data[i].cantidad*precio+' </td></tr>';
+        $('#tbody').html(linea);
+    });
+  });
+</script>
+<script>
+    $('#client_id').change(function(){
+    var client = $(this).val();
+    $.get('/getclient/'+client, function(data){
+      console.log(data);
+      $('#ci').val(data[0].ci);
+      $('#nit').val(data[0].nit);
+    });
+   });
+</script>
+<script>
+  $('.select2').select2();
+</script>
 </body>
 </html>

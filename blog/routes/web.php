@@ -19,10 +19,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//-----users o empleados--------//
+//-----users/ empleados--------//
 	Route::get('/users', 'UserController@index')->name('users');
 	Route::resource('/user', 'UserController');
 	Route::delete('/users/{user}', 'UserController@destroy');
+
+//-----users/ clients--------//
+	Route::get('/clients', 'ClientController@index')->name('clients');
+	Route::resource('/client', 'ClientController');
+	Route::delete('/clients/{client}', 'ClientController@destroy');
+	Route::get('/getclient/{id}', 'ClientController@getclient');
 
 //-----proveedores--------//
 	Route::get('/providers', 'ProviderController@index')->name('providers');
@@ -38,5 +44,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/products', 'ProductController@index')->name('products');
 	Route::resource('/product', 'ProductController');
 
+//-----headers--------//
+	Route::get('/products', 'ProductController@index')->name('products');
+	Route::resource('/header', 'HeaderController');
+
 //-----ventas----------//
 	Route::get('/sales', 'SaleController@index')->name('sales');
+	Route::post('/sales', 'SaleController@store2');
+	Route::resource('/sale', 'SaleController');
+	Route::get('/getproduct/{id}', 'SaleController@getproduct');
+	Route::get('/getbody/{id}', 'SaleController@getbody');

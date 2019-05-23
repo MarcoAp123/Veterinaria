@@ -14,7 +14,7 @@
   <link href="index/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" type="text/css" href="index/plugins/cubeportfolio/css/cubeportfolio.min.css">
   <link href="index/css/nivo-lightbox.css" rel="stylesheet" />
-  <link href=index/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+  <link href="index/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
   <link href="index/css/owl.carousel.css" rel="stylesheet" media="screen" />
   <link href="index/css/owl.theme.css" rel="stylesheet" media="screen" />
   <link href="index/css/animate.css" rel="stylesheet" />
