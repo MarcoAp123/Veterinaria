@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->foreign('provider_id')->references('id')->on('providers');
             $table->string('detail', 80);
             $table->string('category', 30);
-            $table->integer('unit_cost');
-            $table->integer('sale_price');
+            $table->double('unit_cost', 4, 2);
+            $table->double('sale_price', 4, 2);
             $table->integer('cantidad');
             $table->timestamps();
         });

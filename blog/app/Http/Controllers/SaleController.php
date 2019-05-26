@@ -16,7 +16,7 @@ class SaleController extends Controller
 		$list_products = Product::all();
 		$list_clients = Client::all();
 		$list_products = Product::all();
-		return view('sales', compact('list_products', 'list_clients', 'list_products'));
+		return view('sales_products', compact('list_products', 'list_clients', 'list_products'));
 	}
 	//funcion para crear un nuevo registro de cuerpo de servicio
 	public function store(Request $request)

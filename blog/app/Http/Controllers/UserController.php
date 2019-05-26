@@ -26,7 +26,7 @@ class UserController extends Controller
     		'password' => bcrypt($request->password),
     		'rol_id' => $request->rol_id,
     	]);
-        flash(' El nuevo empleado "'.$user->rol->description.'" "'.$user->name.'" ha sido creado con exito! ')->success()->important();
+        flash(' El nuevo empleado "'.$user->rol->description.'" "'.$user->name.'" ha sido creado con exito! ')->success();
         return back();
     }
     //funcion para editar el registro de un empleado 
@@ -34,14 +34,14 @@ class UserController extends Controller
     {
     	$user = User::findOrFail($request->user_id);
     	$user->update($request->all());
-        flash(' El empleado "'.$user->name.' '.$user->rol->description.'" ha sido modificado exitosamente! ')->warning()->important();
+        flash(' El empleado "'.$user->name.' '.$user->rol->description.'" ha sido modificado exitosamente! ')->warning();
         return back();
     }
     //function para eliminar el registro de un empleado
     public function destroy(User $user)
     {
         $user->delete();
-        flash(' El empleado "'.$user->name.' '.$user->rol->description.'" ha sido eliminado exitosamente! ')->error()->important();
+        flash(' El empleado "'.$user->name.' '.$user->rol->description.'" ha sido eliminado exitosamente! ')->error();
         return back();
     } 
 }

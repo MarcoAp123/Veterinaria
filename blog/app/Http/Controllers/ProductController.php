@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
     	$product = Product::create($request->all());
-        flash(' El nuevo Producto "'.$product->detail.''.$product->category.' ha sido creado con exitosamente! ')->success()->important();
+        flash(' El nuevo Producto "'.$product->detail.''.$product->category.' ha sido creado con exitosamente! ')->success();
         return back();
     }
     //funcion para editar el registro de un rol 
@@ -28,7 +28,7 @@ class ProductController extends Controller
     {
     	$product = Product::findOrFail($request->product_id);
     	$product->update($request->all());
-        flash(' El producto "'.$product->detail.''.$product->category.'" ha sido modificado exitosamente! ')->warning()->important();
+        flash(' El producto "'.$product->detail.''.$product->category.'" ha sido modificado exitosamente! ')->warning();
         return back();
     }
 }

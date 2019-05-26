@@ -3,9 +3,10 @@
 @section('content')
   <!----- index de rols ----->
   <section class="content">
-    
     <h3>Lista De Rols</h3>
-    @include ('flash::message')
+    <div id="div-alert">
+      @include ('flash::message')
+    </div>
     <button class="btn btn-success col-sm-2 col-md-offset-10" data-toggle="modal" data-target="#modal-rol-create">Nuevo Rol <i class="fa fa-plus"></i></button>
     
     <!----- tabla de registros de rols ----->

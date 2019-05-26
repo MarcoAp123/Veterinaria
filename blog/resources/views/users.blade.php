@@ -4,7 +4,9 @@
   <!----- index de empleados ----->
   <section class="content">
     <h3>Lista De Usuarios</h3>
-    @include ('flash::message')
+    <div id="div-alert">
+      @include ('flash::message')
+    </div>
     <button type="button" class="btn btn-success col-md-2 col-md-offset-10" data-toggle="modal" data-target="#modal-user-create">Nuevo Empleado <i class="fa fa-user-plus"></i></button>
 
     <!----- tabla de registros de empleados ----->

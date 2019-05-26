@@ -8,12 +8,23 @@ class Header extends Model
 {
     protected $fillable = ['user_id', 'client_id'];
 
-    public function clients() 
+    public function client() 
     {
-        return $this->belongsToMany(Client::class, 'headers', 'user_id', 'client_id');
+        return $this->belongsTo(Client::class);
     }
-    public function users() 
+
+    public function user() 
     {
-    	return $this->belongToMany(User::class, 'headers', 'user_id', 'client_id');
+    	return $this->belongTo(User::class);
+    }
+
+    public function header_products() 
+    {
+        return $this->hasMany(Header_product::class);
+    }
+
+    public function header_services() 
+    {
+        return $this->hasMany(Header_services::class);
     }
 }

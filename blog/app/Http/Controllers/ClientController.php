@@ -17,7 +17,7 @@ class ClientController extends Controller
     public function store(Request $request)
     {
     	$client = Client::create($request->all());
-        flash(' El nuevo empleado "'.$client->name.'" "'.$client->ci.'" ha sido creado con exito! ')->success()->important();
+        flash(' El nuevo empleado "'.$client->name.'" "'.$client->ci.'" ha sido creado con exito! ')->success();
         return back();
     }
     //funcion para editar el registro de un empleado 
@@ -25,14 +25,14 @@ class ClientController extends Controller
     {
     	$client = client::findOrFail($request->client_id);
     	$client->update($request->all());
-        flash(' El empleado "'.$client->name.'" "'.$client->ci.'" ha sido modificado exitosamente! ')->warning()->important();
+        flash(' El empleado "'.$client->name.'" "'.$client->ci.'" ha sido modificado exitosamente! ')->warning();
         return back();
     }
     //function para eliminar el registro de un empleado
     public function destroy(User $user)
     {
         $client->delete();
-        flash(' El empleado "'.$client->name.'" "'.$client->ci.'" ha sido eliminado exitosamente! ')->error()->important();
+        flash(' El empleado "'.$client->name.'" "'.$client->ci.'" ha sido eliminado exitosamente! ')->error();
         return back();
     }
     public function getclient(Request $request, $id)

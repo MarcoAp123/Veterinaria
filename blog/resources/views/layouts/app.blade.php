@@ -160,14 +160,34 @@
             <i class="fa fa-pie-chart"></i><span>Reportes</span>
           </a>
         </li>
-          <li>
-          <a href="{{route('sales')}}">
-            <i class="fa fa-usd"></i><span>Ventas </span>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-usd"></i><span>Venta de productos</span>
+            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('sale_products')}}"><i class="fa fa-plus"></i> Realizar Nueva Venta </a></li>
+            <li><a href=""><i class="fa fa-align-justify"></i> Registro de Ventas </a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-usd"></i><span>Prestacion de servicios</span>
+            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-plus"></i> Realizar Nueva Servicio </a></li>
+            <li><a href=""><i class="fa fa-align-justify"></i> Registro De Servicios Realizados </a></li>
+          </ul>
         </li>
         <li>
           <a href="{{route('products')}}">
             <i class="fa fa-eyedropper"></i><span>Productos</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa fa-heartbeat"></i><span>Servicios</span>
           </a>
         </li>
         <li class="treeview">
@@ -180,26 +200,6 @@
             <li><a href="{{route('clients')}}"><i class="fa fa-user"></i> Clientes </a></li>
             <li><a href="{{route('rols')}}"><i class="fa fa-black-tie"></i> Roles </a></li>
           </ul>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-heartbeat"></i><span>Cirugias</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-stethoscope"></i><span>Consultas</span>
-            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../../index.html"><i class="fa fa-plus-square"></i> Mayores </a></li>
-            <li><a href="../../index2.html"><i class="fa fa-minus-square"></i> Menores  </a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-medkit"></i><span>Tratamientos</span>
-          </a>
         </li>
         <li>
           <a href="{{ route('providers') }}">
@@ -524,7 +524,9 @@
 <!-- DataTables -->
 <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="js/asd.js"></script>
+<script>
+$('#div-alert').not('.alert-important').delay(3500).fadeOut(350);
+</script>
 <script>
   $(function () {
     $('#example1').DataTable()
@@ -619,16 +621,18 @@
   });
 </script>
 <script>
-    $('#product_id').change(function(){
-    var product = $(this).val();
-    $.get('/getproduct/'+product, function(data){
-      console.log(data);
-      $('#stock').val(data[0].cantidad);
-      $('#sale_price').val(data[0].sale_price);
-    });
-   });
+  $('#product_id').change(function(){
+  var product = $(this).val();
+  $.get('/getproduct/'+product, function(data){
+    console.log(data);
+    $('#stock').val(data[0].cantidad);
+    $('#sale_price').val(data[0].sale_price);
+  });
+ });
 </script>
 <script>
+  $('#header-sale').show();
+  $('#header-new-sale').hide();
   $('#div-productos').hide();
   $('#create-header').click(function(){
     var user = $('#user_id').val();
@@ -645,18 +649,24 @@
         user_id : user,
         client_id : client,
       }
+    }).done(function (data){
+      var json_string = JSON.stringify(data);
+      var obj = $.parseJSON(json_string);
+      $('#header_id').val(obj.id);
+      $('#header-sale').hide();
+      $('#header-new-sale').show();
+      $('#div-boton').hide();
+      $('#div-productos').show();
     });
-    $('#div-boton').hide();
-    $('#div-productos').show();
   });
 </script>
 <script>
-  $('#add').click(function(){
-    var service_header = $('#service_header_id').val();
+  $('#table-header_products').hide();
+  $('#add-product').click(function(){
+    var header = $('#header_id').val();
     var product = $('#product_id').val();
-    var service = $('#service_id').val();
-    var cantid = $('#cantidad').val();
-    var route = "http://localhost:8000/sale";
+    var cantid = $('#cantid').val();
+    var route = "http://localhost:8000/header_product";
     var token = $('#token').val();
 
     $.ajax({
@@ -665,19 +675,22 @@
       type : 'POST',
       dataType : 'json',
       data : {
-        service_header_id : service_header,
+        header_id : header,
         product_id : product,
-        service_id : service,
         cantidad : cantid,
       }
     });
-    $.get('/getbody/'+service_header, function(data){
+    $('#table-header_products').show();
+    $.get('/getheader_products/'+header, function(data){
       console.log(data);
-      var precio = $('#sale_price').val();
       var linea = '';
-        for (var i=0; i<data.length; i++)
-          linea+= '<tr><td><button type="button" class="btn btn-warning"><i class="fa fa-remove"></i></button></td><td>'+data[i].product_id+'</td><td>'+data[i].cantidad+'</td><td></td><td>'+data[i].cantidad*precio+' </td></tr>';
-        $('#tbody').html(linea);
+      var total = 0;
+      for (var i=0; i<data.length; i++){
+        linea+='<tr><td><button type="button" class="btn btn-warning"><i class="fa fa-remove"></i></button></td><td>'+data[i].product.detail+'</td><td>'+data[i].product.category+'</td><td>'+data[i].cantidad+'</td><td>'+data[i].product.sale_price+'</td><td>'+data[i].product.sale_price*data[i].cantidad+'</td></tr>';
+        total=data[i].product.sale_price*data[i].cantidad+total;
+        $('#sale-total').val(total);
+        $('#table-body-header_products').html(linea);
+      };
     });
   });
 </script>

@@ -4,7 +4,9 @@
   <!----- index de empleados ----->
   <section class="content">
     <h3>Inventario De Productos</h3>
-    @include ('flash::message')
+    <div id="div-alert">
+      @include ('flash::message')
+    </div>
     <button type="button" class="btn btn-success col-md-2 col-md-offset-10" data-toggle="modal" data-target="#modal-product-create">Nuevo Producto <i class="fa fa-plus-square"></i></button>
 
     <!----- tabla de todos los productos----->
@@ -73,11 +75,11 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Costo Unitario</label>
                   <div class="col-sm-3">
-                    <input type="number" class="form-control" id="inputEmail3" placeholder="En Bs." name="unit_cost">
+                    <input type="number" step="any" class="form-control" id="inputEmail3" placeholder="En Bs." name="unit_cost">
                   </div>
                   <label for="inputEmail3" class="col-sm-3 control-label">Precio Venta/u</label>
                   <div class="col-sm-3">
-                    <input type="number" class="form-control" id="inputEmail3" placeholder="En Bs." name="sale_price">
+                    <input type="number" step="any" class="form-control" id="inputEmail3" placeholder="En Bs." name="sale_price">
                   </div>
                 </div>
                 <div class="form-group">

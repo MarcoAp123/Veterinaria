@@ -17,7 +17,7 @@ class ProviderController extends Controller
     public function store(Request $request)
     {
     	$provider = Provider::create($request->all());
-        flash(' El nuevo empleado "'.$provider->name.'" ha sido creado con exito! ')->success()->important();
+        flash(' El nuevo empleado "'.$provider->name.'" ha sido creado con exito! ')->success();
         return back();
     }
     //funcion para editar el registro de un empleado 
@@ -25,14 +25,14 @@ class ProviderController extends Controller
     {
     	$provider = Provider::findOrFail($request->provider_id);
     	$provider->update($request->all());
-        flash(' El empleado "'.$provider->name.' " ha sido modificado exitosamente! ')->warning()->important();
+        flash(' El empleado "'.$provider->name.' " ha sido modificado exitosamente! ')->warning();
         return back();
     }
     //function para eliminar el registro de un empleado
     public function destroy(Provider $provider)
     {
         $provider->delete();
-        flash(' El empleado "'.$provider->name.'" ha sido eliminado exitosamente! ')->error()->important();
+        flash(' El empleado "'.$provider->name.'" ha sido eliminado exitosamente! ')->error();
         return back();
     }  
 }

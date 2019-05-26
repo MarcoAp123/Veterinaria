@@ -13,8 +13,8 @@ class Product extends Model
     	return $this->belongsTo(Provider::class);
     }
 
-    public function service_body() 
+    public function header_products() 
     {
-        return $this->belongsTo(Service_body::class);
+        return $this->hasMany(Header_product::class);
     }
 }
