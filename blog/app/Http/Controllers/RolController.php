@@ -17,7 +17,7 @@ class RolController extends Controller
     public function store(Request $request)
     {
     	$rol = Rol::create($request->all());
-        flash(' El nuevo rol "'.$rol->description.'" con la abreviatura "'.$rol->name.'" ha sido creado con exitosamente! ')->success();
+        flash(' El nuevo rol "'.$rol->description.'" con la abreviatura "'.$rol->name.'" ha sido creado con exitosamente! ')->success()->important();
         return back();
     }
     //funcion para editar el registro de un rol 
@@ -25,7 +25,7 @@ class RolController extends Controller
     {
     	$rol = Rol::findOrFail($request->rol_id);
     	$rol->update($request->all());
-        flash(' El rol "'.$rol->description.'" con la abreviatura "'.$rol->name.'" ha sido modificado exitosamente! ')->warning();
+        flash(' El rol "'.$rol->description.'" con la abreviatura "'.$rol->name.'" ha sido modificado exitosamente! ')->warning()->important();
         return back();
     }
     //function para eliminar el registro de un rol

@@ -3,9 +3,10 @@
 @section('content')
   <section class="content">
     <h3>Venta de Productos</h3>
-    <div id="msj-success" class="aler alert-success alert-dismissible" role="alert" style="display: none">
-      <strong>Cabecera Creada Correctamente</strong>
-    </div>
+      @include ('flash::message')
+       <div id="message-delete" class="alert alert-danger" role="alert" style="display:none">
+          <strong> El registro se eliminó correctamente.</strong>
+      </div>
     <div class="box box-success">
       <div id="header-sale" class="box-header">
         <h2 class="box-title">Realizar Nueva Venta </h2>
@@ -97,7 +98,7 @@
               <th class="col-sm-2">SubTotal [Bs.]</th>
             </tr>
             </thead>
-            <tbody id="table-body-header_products">
+            <tbody id="tbody-header_products">
 
             </tbody>
           </table>
@@ -109,6 +110,12 @@
                 <input type="text" class="form-control" id="sale-total" disabled>
               </div>
             </div>
+          </div>
+          <br>
+          <div class="row">
+            <a href="" class="btn btn-primary col-sm-1 col-sm-offset-8"><i class="fa fa-file-pdf-o"></i> Facturar</a>
+
+            <a href="{{route('new_sale_product')}}" class="btn btn-success col-sm-1 col-sm-offset-1">Guardar</a>
           </div>
           <hr>
         </div>

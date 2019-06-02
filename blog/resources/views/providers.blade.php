@@ -3,7 +3,7 @@
 @section('content')
   <!----- index de empleados ----->
   <section class="content">
-    <h3>Lista De Proveedores</h3>
+    <h3>registro De Proveedores</h3>
     <div id="div-alert">
       @include ('flash::message')
     </div>
@@ -13,7 +13,7 @@
     <div class="box-body">
       <div class="box-header">
       </div>      
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="example2" class="table table-bordered table-striped">
         <thead>
         <tr>
           <th>Id</th>

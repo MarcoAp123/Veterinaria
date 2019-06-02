@@ -19,8 +19,16 @@ class ProductController extends Controller
     //funcion para crear un nuevo registro de rol
     public function store(Request $request)
     {
-    	$product = Product::create($request->all());
-        flash(' El nuevo Producto "'.$product->detail.''.$product->category.' ha sido creado con exitosamente! ')->success();
+    	$product = Product::create([
+            'provider_id' => $request->provider_id,
+            'detail' => $request->detail,
+            'category' => $request->category,
+            'unit_cost' => $request->unit_cost,
+            'sale_price' => $request->sale_price,
+            'cantidad' => 0,
+            's_min' => $request->s_min,
+        ]);
+        flash(' El nuevo Producto "'.$product->detail.' '.$product->category.' '.$product->unit_cost.' "ha sido creado con exitosamente! ')->success();
         return back();
     }
     //funcion para editar el registro de un rol 

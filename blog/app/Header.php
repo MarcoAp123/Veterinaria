@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Header extends Model
 {
-    protected $fillable = ['user_id', 'client_id'];
+    protected $fillable = ['user_id', 'client_id', 'type'];
 
     public function client() 
     {
@@ -15,7 +15,7 @@ class Header extends Model
 
     public function user() 
     {
-    	return $this->belongTo(User::class);
+    	return $this->belongsTo(User::class);
     }
 
     public function header_products() 

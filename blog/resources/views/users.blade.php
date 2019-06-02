@@ -12,7 +12,7 @@
     <!----- tabla de registros de empleados ----->
     <div class="box-body">
       <div class="box-header"></div>      
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="example2" class="table table-bordered table-striped">
         <thead>
         <tr>
           <th>Id</th>
@@ -35,9 +35,10 @@
               <form action="/users/{{$user->id}}" method="POST">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                <button type="button" class="btn btn-danger btn-delete col-md-7"> <i class="fa fa-trash"></i></button></td> 
-              </form>              
-            </tr>
+                <button type="button" class="btn btn-danger btn-delete col-md-7"> <i class="fa fa-trash"></i></button>
+              </form>
+            </td>               
+          </tr>
           @endforeach                  
         </tbody>
       </table>
@@ -74,8 +75,8 @@
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Rol</label>
-                  <div class="col-sm-4">
-                    <select class="form-control select2" name="rol_id">
+                  <div class="col-sm-5">
+                    <select class="form-control select2" style="width: 100%" name="rol_id">
                       @foreach ($list_roles as $rol)
                           <option value="{{ $rol->id }}">{{ $rol->description }}</option>
                       @endforeach

@@ -19,6 +19,7 @@ class CreateHeadersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('client_id')->nullable();
             $table->foreign('client_id')->references('id')->on('clients');
+            $table->string('type');
             $table->timestamps();
         });
     }

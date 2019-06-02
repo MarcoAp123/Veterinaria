@@ -3,7 +3,7 @@
 @section('content')
   <!----- index de clientes ----->
   <section class="content">
-    <h3>Lista De Usuarios</h3>
+    <h3>Registro De Usuarios</h3>
     <div id="div-alert">
       @include ('flash::message')
     </div>
@@ -12,7 +12,7 @@
     <!----- tabla de registros de clientes ----->
     <div class="box-body">
       <div class="box-header"></div>      
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="example2" class="table table-bordered table-striped">
         <thead>
         <tr>
           <th>Id</th>

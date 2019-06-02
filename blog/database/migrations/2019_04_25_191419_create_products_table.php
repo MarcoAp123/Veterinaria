@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->double('unit_cost', 4, 2);
             $table->double('sale_price', 4, 2);
             $table->integer('cantidad');
+            $table->integer('s_min');            
             $table->timestamps();
         });
     }

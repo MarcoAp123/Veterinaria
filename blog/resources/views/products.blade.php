@@ -12,7 +12,7 @@
     <!----- tabla de todos los productos----->
     <div class="box-body">
       <div class="box-header"></div>      
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="example2" class="table table-bordered table-striped">
         <thead>
         <tr>
           <th>Id</th>
@@ -21,7 +21,8 @@
           <th>Proveedor</th>
           <th>Costo Unitario(Bs.)</th>
           <th>Precio De Venta(Bs.)</th>
-          <th>Cantidad</th>
+          <th>Stock</th>
+          <th>U. Minimas</th>
           <th>Editar</th>
         </tr>
         </thead>
@@ -35,7 +36,8 @@
               <td>{{ $product->unit_cost }}</td>
               <td>{{ $product->sale_price }}</td>
               <td>{{ $product->cantidad }}</td>
-              <td><button class="btn btn-warning col-md-9" data-toggle="modal" data-myproduct_id='{{$product->id}}' data-mydetail='{{$product->detail}}' data-mycategory='{{$product->category}}' data-myunit_cost='{{$product->unit_cost}}' data-mysale_price='{{$product->sale_price}}' data-target="#modal-product-edit"> <i class="fa fa-wrench"></i></button></td>
+              <td>{{ $product->s_min }}</td>
+              <td><button class="btn btn-warning col-md-9" data-toggle="modal" data-myproduct_id='{{$product->id}}' data-mydetail='{{$product->detail}}' data-mycategory='{{$product->category}}' data-myunit_cost='{{$product->unit_cost}}' data-mysale_price='{{$product->sale_price}}' data-mys_min="{{$product->s_min}}" data-target="#modal-product-edit"> <i class="fa fa-wrench"></i></button></td>
             </tr>
           @endforeach                          
         </tbody>
@@ -84,18 +86,19 @@
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Proveedor</label>
-                  <div class="col-sm-9">
-                    <select class="form-control select2" name="provider_id">
+                  <div class="col-sm-5">
+                    <select class="form-control select2" style="width: 100%" name="provider_id">
                       @foreach ($list_providers as $provider)
                           <option value="{{ $provider->id }}">{{ $provider->name }}</option>
                       @endforeach
                     </select>
                   </div>
+                  <button type="button" class="btn btn-success col-md-2" data-toggle="modal" data-target="#modal-provider-create"> Proveedor <i class="fa fa-user-plus"></i> </button>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3 control-label">Cantidad</label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="inputEmail3" placeholder="Cantidad inicial" name="cantidad">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Stock minimo</label>
+                  <div class="col-sm-4">
+                    <input type="number" class="form-control" id="inputEmail3" placeholder="Unidades" name="s_min">
                   </div>
                 </div>                
               </div>
@@ -159,7 +162,12 @@
                     </select>
                   </div>
                 </div>
-              
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Stock minimo</label>
+                  <div class="col-sm-4">
+                    <input type="number" class="form-control" id="s_min" name="s_min">
+                  </div>
+                </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
                 <button type="submit" class="btn btn-warning">Guardar</button>

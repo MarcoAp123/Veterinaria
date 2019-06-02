@@ -69,19 +69,49 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+//-----services--------//
+	//--------ruta---Index de los servicios---------//
+	Route::get('/services', 'ServiceController@index')->name('services');
+	//--------ruta---crea, edita servicios----------//
+	Route::resource('/service', 'ServiceController');
+
+
+
+
+//-----Orders--------//
+	//--------ruta---Index de ordenes---------//
+	Route::get('/orders', 'OrderController@index')->name('orders');
+	//--------ruta---crea----------//
+	Route::resource('/order', 'OrderController');
+
+
+
+
 //-----headers--------//
-	//--------ruta---Index venta de productos---------//
-	Route::get('/sale_products', 'HeaderController@index_sale_products')->name('sale_products');
 	//--------ruta---crea cabeceras----------//
 	Route::post('/header', 'HeaderController@store');
 
-		//--------ruta---Crea una venta-------//
+		//--------ruta---Index nueva venta de productos---------//
+		Route::get('/new_sale_product', 'HeaderController@index_new_sale_product')->name('new_sale_product');
+		//--------ruta---Index registro de venta de productos---------//
+		Route::get('/sale_products', 'HeaderController@index_sale_products')->name('sale_products');
+		
+
+		//--------ruta---Index nueva prestacion de servicios---------//
+		Route::get('/new_provision_service', 'HeaderController@index_new_provision_service')->name('new_provision_service');
+		//--------ruta---Index registro de prestacion de servicios---------//
+		Route::get('/provision_services', 'HeaderController@index_provision_services')->name('provision_services');
+
+
+		//--------ruta---Crea una venta de producto-------//
 		Route::post('/header_product', 'Header_productController@store');
+		//--------ruta---trae el detalle de una venta de producto-------//
 		Route::get('/getheader_products/{id}', 'Header_productController@getheader_products');
+		//--------ruta---elimina un registro----------//
+		Route::delete('/header_product/{id}', 'Header_productController@destroy');
 
 
-//-----header/Product (Venta de productos)--------//
-	Route::resource('/header_product', 'Header_productController');
+
 
 //-----ventas----------//
 	Route::get('/sales', 'SaleController@index')->name('sales');

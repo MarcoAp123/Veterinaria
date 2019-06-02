@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- alerts style -->
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- alert mensajes -->
+  <link rel="stylesheet" href="js/jquery-alertable-master/jquery.alertable.css">
+
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
@@ -166,8 +169,8 @@
             <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{route('sale_products')}}"><i class="fa fa-plus"></i> Realizar Nueva Venta </a></li>
-            <li><a href=""><i class="fa fa-align-justify"></i> Registro de Ventas </a></li>
+            <li><a href="{{route('new_sale_product')}}"><i class="fa fa-plus"></i> Realizar Nueva Venta </a></li>
+            <li><a href="{{route('sale_products')}}"><i class="fa fa-align-justify"></i> Registro De Ventas </a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -176,8 +179,8 @@
             <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-plus"></i> Realizar Nueva Servicio </a></li>
-            <li><a href=""><i class="fa fa-align-justify"></i> Registro De Servicios Realizados </a></li>
+            <li><a href="{{route('new_provision_service')}}"><i class="fa fa-plus"></i> Realizar Nueva Prestacion </a></li>
+            <li><a href="{{route('provision_services')}}"><i class="fa fa-align-justify"></i> Registro De Servicios Realizados </a></li>
           </ul>
         </li>
         <li>
@@ -186,7 +189,7 @@
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="{{route('services')}}">
             <i class="fa fa-heartbeat"></i><span>Servicios</span>
           </a>
         </li>
@@ -200,6 +203,11 @@
             <li><a href="{{route('clients')}}"><i class="fa fa-user"></i> Clientes </a></li>
             <li><a href="{{route('rols')}}"><i class="fa fa-black-tie"></i> Roles </a></li>
           </ul>
+        </li>
+        <li>
+          <a href="{{route('orders')}}">
+            <i class="fa fa-cart-plus"></i><span>Pedidos</span>
+          </a>
         </li>
         <li>
           <a href="{{ route('providers') }}">
@@ -517,6 +525,8 @@
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+<!-- alerts mensajes -->
+<script src="js/jquery-alertable-master/jquery.alertable.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- Select2 -->
@@ -525,19 +535,21 @@
 <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script>
-$('#div-alert').not('.alert-important').delay(3500).fadeOut(350);
+  $("#div-alert").fadeIn();
+  $('#div-alert').toggle(6000);
+  $('#div-alert').show().delay(5000).fadeOut(5);
 </script>
 <script>
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable(
     {
-      'paging'      : true,
+      'paging'      : false,
       'lengthChange': false,
-      'searching'   : false,
+      'searching'   : true,
       'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
+      'info'        : false,
+      'autoWidth'   : true
     })
   })
 </script>
@@ -570,6 +582,18 @@ $('#div-alert').not('.alert-important').delay(3500).fadeOut(350);
   })
 </script>
 <script>
+  $('#modal-service-edit').on('show.bs.modal', function (event){
+      var button = $(event.relatedTarget)
+      var service_id = button.data('myservice_id')
+      var name = button.data('myname')
+      var description = button.data('mydescription')
+      var modal = $(this)
+      modal.find('.modal-body #service_id').val(service_id);
+      modal.find('.modal-body #name').val(name);
+      modal.find('.modal-body #description').val(description);
+  })
+</script>
+<script>
   $('#modal-product-edit').on('show.bs.modal', function (event){
       var button = $(event.relatedTarget)
       var product_id = button.data('myproduct_id')
@@ -577,12 +601,14 @@ $('#div-alert').not('.alert-important').delay(3500).fadeOut(350);
       var category = button.data('mycategory')
       var unit_cost = button.data('myunit_cost')
       var sale_price = button.data('mysale_price')
+      var s_min = button.data('mys_min')
       var modal = $(this)
       modal.find('.modal-body #product_id').val(product_id);
       modal.find('.modal-body #detail').val(detail);
       modal.find('.modal-body #category').val(category);
       modal.find('.modal-body #unit_cost').val(unit_cost);
       modal.find('.modal-body #sale_price').val(sale_price);
+      modal.find('.modal-body #s_min').val(s_min);
   })
 </script>
 <script>
@@ -621,12 +647,64 @@ $('#div-alert').not('.alert-important').delay(3500).fadeOut(350);
   });
 </script>
 <script>
+  function remove_header_product(id) {
+    $.alertable.confirm('¿ Está seguro de eliminar este registro ?').then(function(){
+    var route = "http://localhost:8000/header_product/"+id+"";
+    var token = $("#token").val();
+    $.ajax({
+      url: route,
+      headers: {'X-CSRF-TOKEN': token},
+      type: 'DELETE',
+      dataType: 'json',
+      success: function(data){
+        if (data.success == 'true')
+        {
+          $("#message-delete").fadeIn();
+          $('#message-delete').toggle(4000);
+          $('#message-delete').show().delay(4000).fadeOut(1);
+        }
+      }
+    }).done(function (data){
+      $('#tbody-header_products').empty();
+      $('#sale-total').empty();
+      var header = $('#header_id').val();
+      var product = $('#product_id').val();
+      var cantid = $('#cantid').val();
+      var route = "http://localhost:8000/header_product";
+      var token = $('#token').val();
+
+      $('#table-header_products').show();
+      $.get('/getheader_products/'+header, function(data){
+        console.log(data);
+        var linea = '';
+        var total = 0;
+        for (var i=0; i<data.length; i++){
+          linea+='<tr><td><a href="#" class="btn btn-danger" onclick="remove_header_product('+data[i].id+')"><i class="fa fa-remove"></i></a></td><td>'+data[i].product.detail+'</td><td>'+data[i].product.category+'</td><td>'+data[i].cantidad+'</td><td>'+data[i].product.sale_price+'</td><td>'+data[i].product.sale_price*data[i].cantidad+'</td></tr>';
+          total=data[i].product.sale_price*data[i].cantidad+total;
+          $('#sale-total').val(total);
+          $('#tbody-header_products').html(linea);
+        };
+      });
+    });
+  });
+};
+</script>
+<script>
   $('#product_id').change(function(){
   var product = $(this).val();
   $.get('/getproduct/'+product, function(data){
     console.log(data);
     $('#stock').val(data[0].cantidad);
     $('#sale_price').val(data[0].sale_price);
+  });
+ });
+</script>
+<script>
+  $('#order-product_id').change(function(){
+  var product = $(this).val();
+  $.get('/getproduct/'+product, function(data){
+    console.log(data);
+    $('#stock-product').val(data[0].cantidad);
   });
  });
 </script>
@@ -661,6 +739,9 @@ $('#div-alert').not('.alert-important').delay(3500).fadeOut(350);
   });
 </script>
 <script>
+  $(".alert").alert();
+</script>
+<script>
   $('#table-header_products').hide();
   $('#add-product').click(function(){
     var header = $('#header_id').val();
@@ -686,13 +767,36 @@ $('#div-alert').not('.alert-important').delay(3500).fadeOut(350);
       var linea = '';
       var total = 0;
       for (var i=0; i<data.length; i++){
-        linea+='<tr><td><button type="button" class="btn btn-warning"><i class="fa fa-remove"></i></button></td><td>'+data[i].product.detail+'</td><td>'+data[i].product.category+'</td><td>'+data[i].cantidad+'</td><td>'+data[i].product.sale_price+'</td><td>'+data[i].product.sale_price*data[i].cantidad+'</td></tr>';
+        linea+='<tr><td><a href="#" class="btn btn-danger" onclick="remove_header_product('+data[i].id+')"><i class="fa fa-remove"></i></a></td><td>'+data[i].product.detail+'</td><td>'+data[i].product.category+'</td><td>'+data[i].cantidad+'</td><td>'+data[i].product.sale_price+'</td><td>'+data[i].product.sale_price*data[i].cantidad+'</td></tr>';
         total=data[i].product.sale_price*data[i].cantidad+total;
         $('#sale-total').val(total);
-        $('#table-body-header_products').html(linea);
+        $('#tbody-header_products').html(linea);
       };
     });
   });
+</script>
+<script>
+  $('#modal-sale_product-detail').on('show.bs.modal', function (event){
+    $('#tbody-sale_products-detail').empty();
+    var vacio = '';
+    $('#sale-total-detail').val(vacio);
+    var button = $(event.relatedTarget);
+    var header = button.data('myheader_id');
+    var modal = $(this);
+    modal.find('.modal-body #header_id').val(header);
+
+    $.get('/getheader_products/'+header, function(data){
+      console.log(data);
+      var linea = '';
+      var total = 0;
+      for (var i=0; i < data.length; i++) {
+        linea+='<tr><td>'+data[i].id+'</td><td>'+data[i].product.detail+'</td><td>'+data[i].product.category+'</td><td>'+data[i].cantidad+'</td><td>'+data[i].product.sale_price+'</td><td>'+data[i].product.sale_price*data[i].cantidad+'</td></tr>';
+        total=data[i].product.sale_price*data[i].cantidad+total;
+        $('#sale-total-detail').val(total);
+        $('#tbody-sale_products-detail').html(linea);
+      }
+    });
+  })
 </script>
 <script>
     $('#client_id').change(function(){
