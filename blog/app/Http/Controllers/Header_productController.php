@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Header_product;
 use App\Product;
+use PDF;
 
 class Header_productController extends Controller
 {
@@ -19,8 +20,6 @@ class Header_productController extends Controller
                 'cantidad' => $product->cantidad-$cantidad,
             ]);
             return Header_product::create($request->all());
-        } else {
-            return '<script type="text/javascript">alert("hello!");</script>';
         }
     }
     //funcion para traer los detalles de una venta

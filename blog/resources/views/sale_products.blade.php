@@ -27,7 +27,7 @@
             <td>{{$header->user->name}}</td>
             <td>{{$header->client->name}}</td>
             <td>{{$header->created_at}}</td>
-            <td><button class="btn btn-primary col-md-9" data-toggle="modal" data-myheader_id="{{$header->id}}" data-target="#modal-sale_product-detail"></i>Ver</button></td>
+            <td><a href="/get_bill/{{$header->id}}" class="btn btn-info">Factura</a><button class="btn btn-primary" data-toggle="modal" data-myheader_id="{{$header->id}}" data-target="#modal-sale_product-detail"></i>Ver</button></td>
            </tr>
           @endforeach                  
         </tbody>

@@ -47,7 +47,7 @@
               <input type="text" class="form-control" value="{{Auth::user()->name}} , {{ Auth::user()->rol->description }}" disabled>
             </div>
             <div id="div-boton">
-              <button type="button" class="btn btn-success col-md-offset-5" id="create-header">Guardar</button>
+              <button type="button" class="btn btn-success col-md-offset-5" id="create-header-products">Guardar</button>
             </div>
           </div>
         </form>
@@ -113,7 +113,7 @@
           </div>
           <br>
           <div class="row">
-            <a href="" class="btn btn-primary col-sm-1 col-sm-offset-8"><i class="fa fa-file-pdf-o"></i> Facturar</a>
+            <button class="btn btn-primary col-sm-1 col-sm-offset-8"><i class="fa fa-file-pdf-o"></i> Facturar</button>
 
             <a href="{{route('new_sale_product')}}" class="btn btn-success col-sm-1 col-sm-offset-1">Guardar</a>
           </div>

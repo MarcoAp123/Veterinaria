@@ -537,7 +537,7 @@
 <script>
   $("#div-alert").fadeIn();
   $('#div-alert').toggle(6000);
-  $('#div-alert').show().delay(5000).fadeOut(5);
+  $('#div-alert').show().delay(5000).fadeOut(8);
 </script>
 <script>
   $(function () {
@@ -647,6 +647,14 @@
   });
 </script>
 <script>
+  $('#bill').click(function(){
+    var header = $('#header_id').val();
+    $.get('/get_bill/'+header, function(data){
+      console.log(data);
+    });
+  });
+</script>
+<script>
   function remove_header_product(id) {
     $.alertable.confirm('¿ Está seguro de eliminar este registro ?').then(function(){
     var route = "http://localhost:8000/header_product/"+id+"";
@@ -660,11 +668,13 @@
         if (data.success == 'true')
         {
           $("#message-delete").fadeIn();
-          $('#message-delete').toggle(4000);
-          $('#message-delete').show().delay(4000).fadeOut(1);
+          $('#message-delete').toggle(6000);
+          $('#message-delete').show().delay(6000).fadeOut(6);
         }
       }
     }).done(function (data){
+      var vacio = '';
+      $('#sale-total').val(vacio);
       $('#tbody-header_products').empty();
       $('#sale-total').empty();
       var header = $('#header_id').val();
@@ -711,11 +721,41 @@
 <script>
   $('#header-sale').show();
   $('#header-new-sale').hide();
-  $('#div-productos').hide();
-  $('#create-header').click(function(){
+  $('#div-services').hide();
+  $('#create-header-services').click(function (){
     var user = $('#user_id').val();
     var client = $('#client_id').val();
-    var route = "http://localhost:8000/header";
+    var route = "http://localhost:8000/header_provision";
+    var token = $('#token').val();
+
+    $.ajax({
+      url : route,
+      headers : {'X-CSRF-TOKEN' : token},
+      type : 'POST',
+      dataType : 'json',
+      data : {
+        user_id : user,
+        client_id : client,
+      }
+    }).done(function (data){
+      var json_string = JSON.stringify(data);
+      var obj = $.parseJSON(json_string);
+      $('#header_id').val(obj.id);
+      $('#header-sale').hide();
+      $('#header-new-sale').show();
+      $('#div-boton').hide();
+      $('#div-services').show();
+    });
+  })
+</script>
+<script>
+  $('#header-sale').show();
+  $('#header-new-sale').hide();
+  $('#div-productos').hide();
+  $('#create-header-products').click(function(){
+    var user = $('#user_id').val();
+    var client = $('#client_id').val();
+    var route = "http://localhost:8000/header_sale";
     var token = $('#token').val();
 
     $.ajax({
@@ -749,8 +789,13 @@
     var cantid = $('#cantid').val();
     var route = "http://localhost:8000/header_product";
     var token = $('#token').val();
+    var stock = $('#stock').val();
+    
+    cant = parseInt(cantid);
+    stoc = parseInt(stock);
 
-    $.ajax({
+    if (cant <= stoc) {
+      $.ajax({
       url : route,
       headers : {'X-CSRF-TOKEN' : token},
       type : 'POST',
@@ -759,20 +804,27 @@
         header_id : header,
         product_id : product,
         cantidad : cantid,
-      }
-    });
-    $('#table-header_products').show();
-    $.get('/getheader_products/'+header, function(data){
-      console.log(data);
-      var linea = '';
-      var total = 0;
-      for (var i=0; i<data.length; i++){
-        linea+='<tr><td><a href="#" class="btn btn-danger" onclick="remove_header_product('+data[i].id+')"><i class="fa fa-remove"></i></a></td><td>'+data[i].product.detail+'</td><td>'+data[i].product.category+'</td><td>'+data[i].cantidad+'</td><td>'+data[i].product.sale_price+'</td><td>'+data[i].product.sale_price*data[i].cantidad+'</td></tr>';
-        total=data[i].product.sale_price*data[i].cantidad+total;
-        $('#sale-total').val(total);
-        $('#tbody-header_products').html(linea);
-      };
-    });
+        }
+      });
+      $('#table-header_products').show();
+      $.get('/getheader_products/'+header, function(data){
+        console.log(data);
+        var linea = '';
+        var total = 0;
+        for (var i=0; i<data.length; i++){
+          linea+='<tr><td><a href="#" class="btn btn-danger" onclick="remove_header_product('+data[i].id+')"><i class="fa fa-remove"></i></a></td><td>'+data[i].product.detail+'</td><td>'+data[i].product.category+'</td><td>'+data[i].cantidad+'</td><td>'+data[i].product.sale_price+'</td><td>'+data[i].product.sale_price*data[i].cantidad+'</td></tr>';
+          total=data[i].product.sale_price*data[i].cantidad+total;
+          $('#sale-total').val(total);
+          $('#tbody-header_products').html(linea);
+        };
+      });
+    }else{
+      $.alertable.alert('La cantidad que introdujo supera a la del stock, introduzca otro valor', {
+        okButton: '<button class="alertable-ok btn btn-primary" type="button">OK</button>'
+      }).always(function() {
+        console.log('Alert dismissed');
+      });
+    };
   });
 </script>
 <script>

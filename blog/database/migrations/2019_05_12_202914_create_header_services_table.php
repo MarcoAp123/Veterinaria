@@ -27,7 +27,7 @@ class CreateHeaderServicesTable extends Migration
             $table->string('age_pet', 2);
             $table->string('weight_pet', 2);
             $table->double('cost', 4, 2);
-            $table->string('recipe', 100);
+            $table->string('recipe', 100)->nullable();
             $table->timestamps();
         });
     }

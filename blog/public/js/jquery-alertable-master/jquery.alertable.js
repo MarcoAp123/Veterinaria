@@ -158,7 +158,7 @@ if(jQuery) (function($) {
 
       // Templates
       cancelButton: '<button class="alertable-cancel" type="button">Cancelar</button>',
-      okButton: '<button class="alertable-ok btn btn-danger" type="submit">Eliminar</button>',
+      okButton: '<button class="alertable-ok btn btn-danger" type="submit">OK</button>',
       overlay: '<div class="alertable-overlay"></div>',
       prompt: '<input class="alertable-input" type="text" name="value">',
       modal:

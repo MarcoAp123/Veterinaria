@@ -88,8 +88,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //-----headers--------//
-	//--------ruta---crea cabeceras----------//
-	Route::post('/header', 'HeaderController@store');
+	//--------ruta---crea cabeceras para venta de productos----------//
+	Route::post('/header_sale', 'HeaderController@store_sale');
+	//--------ruta---crea cabeceras para prestacion de servicios----------//
+	Route::post('/header_provision', 'HeaderController@store_provision');
+	//--------ruta---factura una cabecera----------//
+	Route::get('/get_bill/{id}', 'HeaderController@get_bill');
 
 		//--------ruta---Index nueva venta de productos---------//
 		Route::get('/new_sale_product', 'HeaderController@index_new_sale_product')->name('new_sale_product');

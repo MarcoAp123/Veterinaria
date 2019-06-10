@@ -30,7 +30,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a><i class="fa fa-paw fa-1x"></i><b> Aunixilio</b> Animal</a>
+    <a><i class="fa fa-paw fa-1x"></i><b> Auxilio</b> Animal</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

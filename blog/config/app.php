@@ -178,6 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         //para los graficos
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        //para los pdf's
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -228,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];
