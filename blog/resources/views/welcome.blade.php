@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Medicio landing page template for Health niche</title>
+  <title>Auxilio | Animal</title>
 
   <!-- css -->
   <link href="index/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -57,7 +57,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>        
-          <a class="navbar-brand" href="index.html"><i class="fa fa-paw fa-2x "></i> AUXILIO ANIMAL</a>
+          <a class="navbar-brand" href="{{ url('/') }}"><i class="fa fa-paw fa-2x "></i> AUXILIO ANIMAL</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -262,7 +262,7 @@
                 </div>
                 <div class="service-desc">
                   <h5 class="h-light">Medicina Interna</h5>
-                  <p>Abarca un amplio grupo de enfermedades.</p>
+                  <p>Abarca un amplio grupo de enfermedades.<a href="{{ url('/medicinainterna') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
                 </div>
               </div>
             </div>
@@ -274,7 +274,7 @@
                 </div>
                 <div class="service-desc">
                   <h5 class="h-light">Oftalmología</h5>
-                  <p>Enfermedades oculares pueden tratarse con éxito.</p>
+                  <p>Enfermedades oculares pueden tratarse con éxito.<a href="{{ url('/medicinainterna') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
                 </div>
               </div>
             </div>
@@ -285,7 +285,7 @@
                 </div>
                 <div class="service-desc">
                   <h5 class="h-light">Dermatología</h5>
-                  <p>Emfermedades de la piel que pueden tratarse.</p>
+                  <p>Emfermedades de la piel que pueden tratarse.<a href="{{ url('/medicinainterna') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
                 </div>
               </div>
             </div>
@@ -301,7 +301,7 @@
                 </div>
                 <div class="service-desc">
                   <h5 class="h-light">Cardiología</h5>
-                  <p>Problemas del corazon que pueden tratarse.</p>
+                  <p>Problemas del corazon que pueden tratarse.<a href="{{ url('/medicinainterna') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
                 </div>
               </div>
             </div>
@@ -313,7 +313,7 @@
                 </div>
                 <div class="service-desc">
                   <h5 class="h-light">Odontología</h5>
-                  <p>Enfermedad periodontal es la patología más frecuente.</p>
+                  <p>Enfermedad periodontal es la patología más frecuente.<a href="{{ url('/medicinainterna') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
                 </div>
               </div>
             </div>
@@ -324,7 +324,7 @@
                 </div>
                 <div class="service-desc">
                   <h5 class="h-light">Oncología</h5>
-                  <p>Tratamiento del cancer con quimioterapias.</p>
+                  <p>Tratamiento del cancer con quimioterapias.<a href="{{ url('/medicinainterna') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
                 </div>
               </div>
             </div>

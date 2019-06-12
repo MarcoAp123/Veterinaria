@@ -123,3 +123,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::resource('/sale', 'SaleController');
 	Route::get('/getproduct/{id}', 'SaleController@getproduct');
 	Route::get('/getbody/{id}', 'SaleController@getbody');
+
+// pantallas informativas//
+	Route::get('/medicinainterna', function () {
+    return view('medicinainterna');
+});
