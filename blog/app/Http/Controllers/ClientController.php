@@ -29,7 +29,7 @@ class ClientController extends Controller
         return back();
     }
     //function para eliminar el registro de un cliente
-    public function destroy(User $user)
+    public function destroy(Client $client)
     {
         $client->delete();
         flash(' El empleado "'.$client->name.'" "'.$client->ci.'" ha sido eliminado exitosamente! ')->error();

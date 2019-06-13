@@ -3,7 +3,7 @@
 @section('content')
   <!----- index de empleados ----->
   <section class="content">
-    <h3>registro De Proveedores</h3>
+    <h3>Registro De Proveedores</h3>
     <div id="div-alert">
       @include ('flash::message')
     </div>

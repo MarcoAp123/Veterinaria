@@ -86,6 +86,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+//-----Reportes---------//
+	Route::get('/report_sales', 'HeaderController@report_sales')->name('report_sales');
+	Route::post('/report_sales_date', 'HeaderController@report_sales_date');
+
+
+
 
 //-----headers--------//
 	//--------ruta---crea cabeceras para venta de productos----------//

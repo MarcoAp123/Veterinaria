@@ -34,7 +34,7 @@ class HomeController extends Controller
                         ->title('Usuarios')
                         ->elementLabel('Total Usuarios')
                         ->dimensions(1055, 300)
-                        ->colors(['#00f000'])
+                        ->colors(['#158026'])
                         ->Responsive(false)
                         ->groupByMonth('2019', true);
         return view('home', compact('users', 'lista_users', 'chart'));

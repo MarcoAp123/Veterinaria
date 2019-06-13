@@ -9,6 +9,7 @@ use App\Client;
 use App\Header;
 use App\Header_product;
 use PDF;
+use Charts;
 
 class HeaderController extends Controller
 {
@@ -64,5 +65,41 @@ class HeaderController extends Controller
     	$header_products  = Header_product::with('product')->where('header_id','=', $id)->get();
     	$pdf = PDF::loadView('bill', compact('header', 'header_products'));
     	return $pdf->stream();
+    }
+
+    public function report_sales()
+	{
+		$chart = Charts::database(Header::all(), 'bar', 'highcharts')
+                  ->title("Venta de productos")
+                  ->elementLabel("Total venta de productos")
+                  ->dimensions(1000, 500)
+                  ->responsive(false)
+                  ->groupByMonth(date('Y'));
+		return view('report_sales', compact('chart'));
+	}
+
+	public function report_sales_date(Request $request)
+    {
+
+        if (isset($request->año) && isset($request->año)) {
+            $chart = Charts::database(Header::all(), 'bar', 'highcharts')
+                  ->title("Venta de productos")
+                  ->elementLabel("Total venta de productos")
+                  ->dimensions(1000, 500)
+                  ->colors(['#158026'])
+                  ->responsive(false)
+                  ->groupByDay($request->mes, $request->año);
+        return view('report_sales', compact('chart'));
+
+        } elseif (isset($request->año) || isset($request->año)) {
+            $chart = Charts::database(Header::all(), 'bar', 'highcharts')
+                  ->title("Venta de productos")
+                  ->elementLabel("Total venta de productos")
+                  ->dimensions(1000, 500)
+                  ->colors(['#158026'])
+                  ->responsive(false)
+                  ->groupByMonth($request->año, true);
+            return view('report_sales', compact('chart'));
+        }
     }
 }

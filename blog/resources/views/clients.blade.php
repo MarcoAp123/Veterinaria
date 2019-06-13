@@ -35,9 +35,10 @@
               <form action="/clients/{{$client->id}}" method="POST">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                <button type="button" class="btn btn-danger btn-delete col-md-7"> <i class="fa fa-trash"></i></button></td> 
-              </form>              
-            </tr>
+                <button type="button" class="btn btn-danger btn-delete col-md-7"> <i class="fa fa-trash"></i></button>
+              </form> 
+            </td>             
+          </tr>
           @endforeach                  
         </tbody>
       </table>

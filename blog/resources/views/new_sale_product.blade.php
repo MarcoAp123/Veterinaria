@@ -113,7 +113,7 @@
           </div>
           <br>
           <div class="row">
-            <button class="btn btn-primary col-sm-1 col-sm-offset-8"><i class="fa fa-file-pdf-o"></i> Facturar</button>
+            <button class="btn btn-primary col-sm-1 col-sm-offset-8" id="bill"><i class="fa fa-file-pdf-o"></i> Facturar</button>
 
             <a href="{{route('new_sale_product')}}" class="btn btn-success col-sm-1 col-sm-offset-1">Guardar</a>
           </div>

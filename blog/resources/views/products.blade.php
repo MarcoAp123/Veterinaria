@@ -93,7 +93,6 @@
                       @endforeach
                     </select>
                   </div>
-                  <button type="button" class="btn btn-success col-md-2" data-toggle="modal" data-target="#modal-provider-create"> Proveedor <i class="fa fa-user-plus"></i> </button>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Stock minimo</label>
