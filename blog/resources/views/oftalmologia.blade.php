@@ -87,13 +87,24 @@
       <div class="container marginbot-50">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2">
-              <div class="section-heading text-center"><img src="index/img/dummy/s1.jpg" class="img-responsive" alt="" /><br>
-                <h2 class="h-bold">Medicina Interna</h2>
-                <p>La medicina interna para mascotas es la parte de la veterinaria que se ocupa de diagnosticar y tratar de manera no quirúrgica las enfermedades de los animales que afectan a los distintos órganos y sistemas como el digestivo, respiratorio, urinario, endocrino y/o cardiovascular.
+              <div class="section-heading text-center"><img src="index/img/dummy/s2.jpg" class="img-responsive" alt="" /><br>
+                <h2 class="h-bold">Oftalmología</h2>
+                <p>El Servicio de Oftalmología ofrece diagnóstico y tratamiento de los trastornos oculares en perros, gatos, caballos y animales exóticos. Ofrece un soporte especializado a los veterinarios y a los clientes con animales que presentan problemas oculares habituales o poco frecuentes como queratitis seca, cataratas, glaucoma, inflamación del ojo, tumores, problemas de párpados y enfermedades de la retina. Este servicio también realiza exámenes de aptitud reproductiva para animales de pura raza, detección de enfermedades oculares congénitas y exámenes anuales para la detección precoz de enfermedades oculares hereditarias o relacionadas con la edad.
 
-                Engloba especialidades como la gastroenterología, la neumología, la urología, la cardiología, la hematología o la oncología y juega un papel fundamental en el seguimiento regular de la salud de tu perro o gato.
+                El Servicio de Oftalmología ofrece procedimientos especializados como:
 
-                Nuestros veterinarios profesionales realizan revisiones en profundidad para analizar los síntomas que muestra el animal y poder obtener un diagnóstico adecuado. Para ésto, además de la observación y otras pruebas, se realizan todas aquellas pruebas diagnósticas necesarias para identificar la patología del perro o gato.</p>
+                Examen ocular completo: Biomicroscopía, tonometría, gonioscopia, test de Schirmer, colorantes vitales, citología, oftalmoscopia directa e indirecta, etc;
+                tratamiento de cataratas por facoemulsificación e implante de lentes intraoculares;
+                trasplante de córnea;
+                tratamiento médico, quirúrgico o con láser del glaucoma;
+                retinografía, electrorretinografía y potenciales visuales evocados;
+                angiografía fluoresceínica;
+                tratamientos con láser para desprendimiento de retina y tumores intraoculares;
+                TC (escáner) ocular y de la órbita;
+                ecografía ocular;
+                cirugía reconstructiva de párpados;
+                catéter subpalpebral para el tratamiento tópico en caballos;
+                evisceraciones y prótesis oculares.</p>
 
               </div>
             <div class="divider-short"></div>

@@ -128,3 +128,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/medicinainterna', function () {
     return view('medicinainterna');
 });
+	Route::get('/oftalmologia', function () {
+    return view('oftalmologia');
+});
+	Route::get('/dermatologia', function () {
+    return view('dermatologia');
+});
+	Route::get('/cardiologia', function () {
+    return view('cardiologia');
+});
+	Route::get('/odontologia', function () {
+    return view('odontologia');
+});
+	Route::get('/oncologia', function () {
+    return view('oncologia');
+});

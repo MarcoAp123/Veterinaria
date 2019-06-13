@@ -274,7 +274,7 @@
                 </div>
                 <div class="service-desc">
                   <h5 class="h-light">Oftalmología</h5>
-                  <p>Enfermedades oculares pueden tratarse con éxito.<a href="{{ url('/medicinainterna') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
+                  <p>Enfermedades oculares pueden tratarse con éxito.<a href="{{ url('/oftalmologia') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
                 </div>
               </div>
             </div>
