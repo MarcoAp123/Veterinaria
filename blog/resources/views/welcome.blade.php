@@ -227,13 +227,6 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="wow lightSpeedIn" data-wow-delay="0.1s">
-                    <div class="cta-btn">
-                      <a href="#" class="btn btn-skin btn-lg">Reservar una cita</a>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -285,7 +278,7 @@
                 </div>
                 <div class="service-desc">
                   <h5 class="h-light">Dermatología</h5>
-                  <p>Emfermedades de la piel que pueden tratarse.<a href="{{ url('/medicinainterna') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
+                  <p>Emfermedades de la piel que pueden tratarse.<a href="{{ url('/dermatologia') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
                 </div>
               </div>
             </div>
@@ -301,7 +294,7 @@
                 </div>
                 <div class="service-desc">
                   <h5 class="h-light">Cardiología</h5>
-                  <p>Problemas del corazon que pueden tratarse.<a href="{{ url('/medicinainterna') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
+                  <p>Problemas del corazon que pueden tratarse.<a href="{{ url('/cardiologia') }}" class="btn btn-skin btn-lg">Aprende Más <i class="fa fa-angle-right"></i></a></p>
                 </div>
               </div>
             </div>
@@ -384,7 +377,7 @@
                     </div>
                   </a>
                   <a href="index/doctors/member1.html" class="cbp-singlePage cbp-l-grid-team-name">Alice Grue</a>
-                  <div class="cbp-l-grid-team-position">Psychiatrist</div>
+                  <div class="cbp-l-grid-team-position">Dermatologo</div>
                 </li>
                 <li class="cbp-item cardiologist">
                   <a href="index/doctors/member2.html" class="cbp-caption cbp-singlePage">
@@ -400,7 +393,7 @@
                     </div>
                   </a>
                   <a href="index/doctors/member2.html" class="cbp-singlePage cbp-l-grid-team-name">Joseph Murphy</a>
-                  <div class="cbp-l-grid-team-position">Cardiologist</div>
+                  <div class="cbp-l-grid-team-position">Cardiologo</div>
                 </li>
                 <li class="cbp-item cardiologist">
                   <a href="index/doctors/member3.html" class="cbp-caption cbp-singlePage">
@@ -416,7 +409,7 @@
                     </div>
                   </a>
                   <a href="index/doctors/member3.html" class="cbp-singlePage cbp-l-grid-team-name">Alison Davis</a>
-                  <div class="cbp-l-grid-team-position">Cardiologist</div>
+                  <div class="cbp-l-grid-team-position">Cardiologo</div>
                 </li>
                 <li class="cbp-item neurologist">
                   <a href="index/doctors/member4.html" class="cbp-caption cbp-singlePage">
@@ -432,7 +425,7 @@
                     </div>
                   </a>
                   <a href="index/doctors/member4.html" class="cbp-singlePage cbp-l-grid-team-name">Adam Taylor</a>
-                  <div class="cbp-l-grid-team-position">Neurologist</div>
+                  <div class="cbp-l-grid-team-position">Oncologo</div>
                 </li>
 
               </ul>
@@ -466,12 +459,12 @@
           <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="wow bounceInUp" data-wow-delay="0.2s">
               <div id="owl-works" class="owl-carousel">
-                <div class="item"><a href="index/img/photo/1.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="index/img/works/1@2x.jpg"><img src="index/img/photo/1.jpg" class="img-responsive" alt="img"></a></div>
-                <div class="item"><a href="index/img/photo/2.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="index/img/works/2@2x.jpg"><img src="index/img/photo/2.jpg" class="img-responsive " alt="img"></a></div>
-                <div class="item"><a href="index/img/photo/3.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="index/img/works/3@2x.jpg"><img src="index/img/photo/3.jpg" class="img-responsive " alt="img"></a></div>
-                <div class="item"><a href="index/img/photo/4.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="index/img/works/4@2x.jpg"><img src="index/img/photo/4.jpg" class="img-responsive " alt="img"></a></div>
-                <div class="item"><a href="index/img/photo/5.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="index/img/works/5@2x.jpg"><img src="index/img/photo/5.jpg" class="img-responsive " alt="img"></a></div>
-                <div class="item"><a href="index/img/photo/6.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="index/img/works/6@2x.jpg"><img src="index/img/photo/6.jpg" class="img-responsive " alt="img"></a></div>
+                <div class="item"><img src="index/img/photo/1.jpg" class="img-responsive" alt="img"></a></div>
+                <div class="item"><img src="index/img/photo/2.jpg" class="img-responsive " alt="img"></a></div>
+                <div class="item"><img src="index/img/photo/3.jpg" class="img-responsive " alt="img"></a></div>
+                <div class="item"><img src="index/img/photo/4.jpg" class="img-responsive " alt="img"></a></div>
+                <div class="item"><img src="index/img/photo/5.jpg" class="img-responsive " alt="img"></a></div>
+                <div class="item"><img src="index/img/photo/6.jpg" class="img-responsive " alt="img"></a></div>
               </div>
             </div>
           </div>
